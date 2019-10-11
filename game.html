@@ -7,45 +7,56 @@
                 let choice = Math.floor(Math.random() * Math.floor(3));
 
                 switch (choice){
-                    case 0: return 'rock';
+                    case 0: return 'Rock';
                         break;
-                    case 1: return 'paper';
+                    case 1: return 'Paper';
                         break;
-                    case 2: return 'scissors';
+                    case 2: return 'Scissors';
                         break;
                 }
             }
+
+            function capitalize(word){
+	        var lastLetters = word.toLowerCase().slice(1);
+	        var firstLetter = word.slice(0,1).toUpperCase();
+	        return firstLetter+lastLetters;
+            }
+
+            playerSelection = 'ScISsors';
+            playerSelection = capitalize(playerSelection);
+
+            computerSelection = computerPlay();
 
             function playRound(playerSelection, computerSelection){
                 let responseDraw = 'Draw! ' + playerSelection + ' vs ' + computerSelection;
                 let responseLose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '!';
                 let responseWin = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
                 
-                if(playerSelection == 'rock'){
+                if(playerSelection == 'Rock'){
                     switch (computerSelection){
-                        case 'rock': return responseDraw;
+                        case 'Rock': return responseDraw;
                             break;
-                        case 'paper': return responseLose;
+                        case 'Paper': return responseLose;
                             break;
-                        case 'scissors': return responseWin;
+                        case 'Scissors': return responseWin;
                             break;
                     }
-                } else if (playerSelection == 'paper'){
+                } else if (playerSelection == 'Paper'){
                     switch (computerSelection){
-                        case 'paper': return responseDraw; 
+                        case 'Paper': return responseDraw; 
                             break;
-                        case 'scissors': return responseLose; 
+                        case 'Scissors': return responseLose; 
                             break;
-                        case 'rock': return responseWin; 
+                        case 'Rock': return responseWin; 
                             break;
                     }
-                } else if (playerSelection == 'scissors'){
+                } else if (playerSelection == 'Scissors'){
                     switch (computerSelection){
-                        case 'scissors': return responseDraw; 
+                        case 'Scissors': return responseDraw; 
                             break;
-                        case 'rock': return responseLose; 
+                        case 'Rock': return responseLose; 
                             break;
-                        case 'paper': return responseWin; 
+                        case 'Paper': return responseWin; 
                             break;
                     }
                 } else {
@@ -53,8 +64,6 @@
                 }
             }
 
-            playerSelection = 'rock';
-            computerSelection = computerPlay();
             console.log(playRound(playerSelection, computerSelection));
 
         </script>
