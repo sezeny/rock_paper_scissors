@@ -3,9 +3,14 @@
     <body>
         <script>
 
+            function capitalize(word){
+	        var lastLetters = word.toLowerCase().slice(1);
+	        var firstLetter = word.slice(0,1).toUpperCase();
+	        return firstLetter+lastLetters;
+            }
+
             function computerPlay(){
                 let choice = Math.floor(Math.random() * Math.floor(3));
-
                 switch (choice){
                     case 0: return 'Rock';
                         break;
@@ -16,18 +21,8 @@
                 }
             }
 
-            function capitalize(word){
-	        var lastLetters = word.toLowerCase().slice(1);
-	        var firstLetter = word.slice(0,1).toUpperCase();
-	        return firstLetter+lastLetters;
-            }
-
-            playerSelection = 'ScISsors';
-            playerSelection = capitalize(playerSelection);
-
-            computerSelection = computerPlay();
-
             function playRound(playerSelection, computerSelection){
+
                 let responseDraw = 'Draw! ' + playerSelection + ' vs ' + computerSelection;
                 let responseLose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '!';
                 let responseWin = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
@@ -64,7 +59,55 @@
                 }
             }
 
-            console.log(playRound(playerSelection, computerSelection));
+            function game(){
+                let playerWinCounter = 0;
+                let computerWinCounter = 0;
+
+                playerSelection = prompt('Enter your choice: ');
+                playerSelection = capitalize(playerSelection);
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
+
+                playerSelection = prompt('Enter your choice: ');
+                playerSelection = capitalize(playerSelection);
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
+
+                playerSelection = prompt('Enter your choice: ');
+                playerSelection = capitalize(playerSelection);
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
+
+                playerSelection = prompt('Enter your choice: ');
+                playerSelection = capitalize(playerSelection);
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
+
+                playerSelection = prompt('Enter your choice: ');
+                playerSelection = capitalize(playerSelection);
+                computerSelection = computerPlay();
+                playRound(playerSelection, computerSelection);
+                console.log(playRound(playerSelection, computerSelection));
+
+                if (playRound(playerSelection, computerSelection) == 'responseWin'){
+                    playerWinCounter++
+                } else if (playRound(playerSelection, computerSelection) == 'responseLose'){
+                    computerWinCounter++;
+                }
+
+                if (playerWinCounter > computerWinCounter){
+                    return 'You are the winner!'
+                } else if (playerWinCounter < computerWinCounter) {
+                    return 'You lost :('
+                } else {
+                    return 'Nobody wins, play again to decide the champion!'}
+            }
+
+            console.log(game());
 
         </script>
     </body>
