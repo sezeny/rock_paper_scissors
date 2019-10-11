@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+
+            function computerPlay(){
+                let choice = Math.floor(Math.random() * Math.floor(3));
+
+                switch (choice){
+                    case 0: return 'rock';
+                        break;
+                    case 1: return 'paper';
+                        break;
+                    case 2: return 'scissors';
+                        break;
+                }
+            }
+
+            function playRound(playerSelection, computerSelection){
+                let responseDraw = 'Draw! ' + playerSelection + ' vs ' + computerSelection;
+                let responseLose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '!';
+                let responseWin = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
+                
+                if(playerSelection == 'rock'){
+                    switch (computerSelection){
+                        case 'rock': return responseDraw;
+                            break;
+                        case 'paper': return responseLose;
+                            break;
+                        case 'scissors': return responseWin;
+                            break;
+                    }
+                } else if (playerSelection == 'paper'){
+                    switch (computerSelection){
+                        case 'paper': return responseDraw; 
+                            break;
+                        case 'scissors': return responseLose; 
+                            break;
+                        case 'rock': return responseWin; 
+                            break;
+                    }
+                } else if (playerSelection == 'scissors'){
+                    switch (computerSelection){
+                        case 'scissors': return responseDraw; 
+                            break;
+                        case 'rock': return responseLose; 
+                            break;
+                        case 'paper': return responseWin; 
+                            break;
+                    }
+                } else {
+                    return 'Error';
+                }
+            }
+
+            playerSelection = 'rock';
+            computerSelection = computerPlay();
+            console.log(playRound(playerSelection, computerSelection));
+
+        </script>
+    </body>
+</html>
