@@ -21,11 +21,16 @@
                 }
             }
 
+            let playerSelection;
+            let computerSelection;
+
+            let responseDraw = 'Draw! ' + playerSelection + ' vs ' + computerSelection;
+            let responseLose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '!';
+            let responseWin = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
+                
+
             function playRound(playerSelection, computerSelection){
 
-                let responseDraw = 'Draw! ' + playerSelection + ' vs ' + computerSelection;
-                let responseLose = 'You Lose! ' + computerSelection + ' beats ' + playerSelection + '!';
-                let responseWin = 'You Win! ' + playerSelection + ' beats ' + computerSelection + '!';
                 
                 if(playerSelection == 'Rock'){
                     switch (computerSelection){
@@ -63,51 +68,31 @@
                 let playerWinCounter = 0;
                 let computerWinCounter = 0;
 
-                playerSelection = prompt('Enter your choice: ');
-                playerSelection = capitalize(playerSelection);
-                computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(playRound(playerSelection, computerSelection));
+                for (let i = 0; i < 5; i++){
+                    playerSelection = prompt('Enter your choice: ');
+                    playerSelection = capitalize(playerSelection);
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection);
+                    console.log(playRound(playerSelection, computerSelection));
+                }
 
-                playerSelection = prompt('Enter your choice: ');
-                playerSelection = capitalize(playerSelection);
-                computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(playRound(playerSelection, computerSelection));
-
-                playerSelection = prompt('Enter your choice: ');
-                playerSelection = capitalize(playerSelection);
-                computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(playRound(playerSelection, computerSelection));
-
-                playerSelection = prompt('Enter your choice: ');
-                playerSelection = capitalize(playerSelection);
-                computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(playRound(playerSelection, computerSelection));
-
-                playerSelection = prompt('Enter your choice: ');
-                playerSelection = capitalize(playerSelection);
-                computerSelection = computerPlay();
-                playRound(playerSelection, computerSelection);
-                console.log(playRound(playerSelection, computerSelection));
-
-                if (playRound(playerSelection, computerSelection) == 'responseWin'){
-                    playerWinCounter++
-                } else if (playRound(playerSelection, computerSelection) == 'responseLose'){
+                if (playRound(playerSelection, computerSelection) == responseWin){
+                    playerWinCounter++;
+                } else if (playRound(playerSelection, computerSelection) == responseLose){
                     computerWinCounter++;
                 }
 
                 if (playerWinCounter > computerWinCounter){
-                    return 'You are the winner!'
+                    return 'You are the winner! ' + 'playerWinCounter: ' + playerWinCounter + ' computerWinCounter: ' + computerWinCounter;
                 } else if (playerWinCounter < computerWinCounter) {
-                    return 'You lost :('
+                    return 'You lost :('  + 'playerWinCounter: ' + playerWinCounter + ' computerWinCounter: ' + computerWinCounter;
                 } else {
-                    return 'Nobody wins, play again to decide the champion!'}
+                    return 'Nobody wins, play again to decide the champion!'  + 'playerWinCounter: ' + playerWinCounter + ' computerWinCounter: ' + computerWinCounter;
+                }
             }
 
             console.log(game());
+
 
         </script>
     </body>
